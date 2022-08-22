@@ -1,0 +1,24 @@
+---
+- name: Get Configs
+  hosts: altron
+  gather_facts: false
+  connection: local
+  #remote_user: rancid
+
+  vars:
+    cli:
+      username: rancid
+      password: Pa456753
+      timeout: 100
+
+  tasks:
+  - name: Gather listed l3 interfaces with provided configurations
+    ios_config:
+      provider: "{{ cli }}"
+      lines:
+        - show ip interface brief | ex unass
+    register: result
+    
+    #cisco.ios.ios_l3_interfaces:
+    #  state: gathered
+    #register: print_output
