@@ -1,6 +1,6 @@
 - name: pinging
   hosts: all
-  become: yes
+  become: no
 
 
   tasks:
